@@ -580,15 +580,19 @@ Generate the complete workout now using only the [SECTION][TIMING][EX][NOTE] tag
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, messages:[{role:'user',content:prompt}] })
     });
     const data = await res.json();
+    if(!res.ok) {
+      body.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">API Error ${res.status}: ${data.error?.message||JSON.stringify(data)}</div>`;
+      btn.disabled=false; btn.textContent='GENERATE WORKOUT'; return;
+    }
     const text = data.content?.map(i=>i.text||'').join('')||'';
     renderWorkout(body, text);
     addLogButton(body, day, split.type, time);
   } catch(e) {
-    body.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">Connection error. Try again.</div>`;
+    body.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">Error: ${e.message}. Try again.</div>`;
   }
   btn.disabled=false; btn.textContent='GENERATE WORKOUT';
 }
@@ -620,7 +624,11 @@ function renderWorkout(container, text){
     }
   }
   if(openSection) html+='</div>';
-  container.innerHTML=html;
+  if(!html.trim()) {
+    container.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">No workout generated — API may have returned empty. Check console.</div>`;
+  } else {
+    container.innerHTML=html;
+  }
 }
 
 function addLogButton(container, day, type, time){
@@ -680,7 +688,7 @@ async function genWeek(){
 For each training day give: primary weekly focus, a specific performance target, and one technical cue.
 Return JSON only: [{"day":"Monday","focus":"...","target":"...","technical":"..."},...]`;
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:prompt}]})});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
     let text=data.content?.map(i=>i.text||'').join('')||'';
     text=text.replace(/```json|```/g,'').trim();
@@ -819,7 +827,7 @@ Be specific with quantities scaled to ${people}. Keep it practical and achievabl
   try {
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})
     });
     const data=await res.json();
@@ -827,7 +835,7 @@ Be specific with quantities scaled to ${people}. Keep it practical and achievabl
     renderMealPlan(body, text);
     saveMealHistory(text);
   } catch(e){
-    body.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">Connection error. Try again.</div>`;
+    body.innerHTML=`<div style="color:var(--accent2);font-size:13px;padding:16px 0">Error: ${e.message}. Try again.</div>`;
   }
   btn.disabled=false; btn.textContent='GENERATE MEAL PLAN';
 }
