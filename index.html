@@ -394,42 +394,139 @@ async function generateWorkout(){
   body.innerHTML=`<div class="loading-state"><div class="dots"><span></span><span></span><span></span></div>BUILDING ${split.label||'WORKOUT'}...</div>`;
 
   const dayPrograms = {
-    Mon:`MONDAY = Leg-focused cardio circuit.
-PREP (2-3 sets): 2 min cardio warm-up + ROM mountain climbers, down dog calf pedal, air squat, hip bridge, KB deadlift, alt plank reach
-POWER DEVELOPMENT: EMOM x 24-28 min — alternate each minute: Max effort AB (20s) / KB Russian Swing x10 / Max effort Ski Erg (20s) / Strict pull-ups x5 or TRX row x10 / Max effort Row (20s) / Sandbag Squat x10@appropriate weight / Max effort Bike (20s) / Rest. FULL SEND sprints.
-LOWER ACCESSORY: Every 3:00 x 4 sets — DB Bulgarian SS Lunge 6/6 @RPE8
-FINISHER: 2 sets — 20 BW Cyclists + 30/30s Copenhagen Hold, R60s. THEN 2 min on:1 min off x 4 sets alternating (1) 20 BW Lunges + MAX cal AB remaining / (2) 20 KB Goblet Squat + MAX cal Bike Erg. Goal 15/20+ cal.`,
+    Mon:`MONDAY = Leg-focused cardio circuit. Rotate between these formats — pick one main block per session and vary each week:
 
-    Tue:`TUESDAY = Upper Push + Pull + Power. ANCHOR movements (always include all 4):
+PREP OPTIONS (pick one set of 2-3 moves, 2 sets):
+Option A: 10/10 Lateral Lunge + 10 Alt Dead-bug + 10 DB RDL + 20s Plank
+Option B: 2 min cardio + 10 ROM Mountain climber + 10 Down dog calf pedal + 10 Air Squat + 10 Hip Bridge + 10 KB Deadlift + 10 Alt Plank Reach
+Option C: 2 min cardio + 10 Hamstring sweeps + 10 ROM Mountain climber + 10 Squat+Lunge combo + 3 sets 30s Erg/50 skips
+
+MAIN BLOCK OPTIONS (rotate week to week — use session memory to avoid repeating):
+FORMAT A — EMOM x 28-30 min (5-min rotating blocks): Min 1: 150/200/250m Ski / Min 2: 12-15 KB Deadlift / Min 3: 300/400/500m Bike Erg / Min 4: 12-15 TRX Row / Min 5: Rest. Keep efforts moderate, flow through.
+FORMAT B — EMOM x 28 min (8-min rotating blocks): Min 1: 20s MAX effort AB / Min 2: 10 Russian Swing / Min 3: 20s MAX Ski / Min 4: 5 Strict Pull-up or 10 TRX Row / Min 5: 20s MAX Row / Min 6: 10 Sandbag Squat@30/50kg / Min 7: 20s MAX Bike / Min 8: Rest. FULL SEND sprints.
+FORMAT C — SOLO RELOAD: 1 set for time — 80/100 Cal Ski + 30 Burpee to plate + 150m Farmer Carry + 80/100 Cal Bike + 30 DB Hang Clean+Jerk + 150m Sandbag Carry + 80/100 Cal Row. Keep pace light, break as needed.
+FORMAT D — PAIRS CONDITIONING: Every 6:00 x 4 sets alternating (1) 20 BW Lunges + MAX cal AB remaining time / (2) 20 KB Goblet Squat + MAX cal Bike Erg. Goal 15/20+ cal.
+
+RELOAD SUPERSET (Every 90s x 10 sets, alternate): (1) 12-15 BB Hip Thrust@RPE7 / (2) 8-10 Band Assist Pull-up — big stretch on contraction, strong band.
+
+LOWER ACCESSORY OPTIONS (rotate — Every 3:00-4:00 x 4-5 sets, pick one):
+- DB Bulgarian SS Lunge 6/6 @RPE8
+- BB Sumo Deadlift 8 reps@RPE6 + 40s BW Step Back Lunge + 20m Lateral Band Walk
+- 8/8 Goblet FWD Lunge@RPE6
+- DB RDL@2020 + Hamstring Rollout 7-9 reps (smooth tempo, nothing heavy)
+
+GLUTES ACCESSORY (Every 3:00 x 4 sets, rotate):
+- 10/10 BW High Box Step-up + 20 Russian Swing + 40s Erg@recovery
+- SL Hip Thrust 12-15/side + 20m Lateral Band Walk
+- 20 BW Ramp Cyclist Squat + 20/20s Copenhagen Plank, R90s
+
+FINISHER OPTIONS (rotate formats, pick one):
+- 2 min on:1 min off x 4 sets alternating (1) BW Lunges + MAX cal AB / (2) KB Goblet Squat + MAX cal Bike. Goal 15/20+ cal.
+- Tabata Cals: 20s MAX / 10s rest x 8 rounds on one erg
+- 3 sets: 20 BW Cyclists + 30/30s Copenhagen Hold, R60s
+- Accessory descending ladder: 20-15-10 Hanging Knee Raise + 200-150-100 Single Under Skips`,
+
+    Tue:`TUESDAY = Upper Push + Pull + Power. ANCHOR movements (always include ALL 4 — non-negotiable):
 1. CLEAN COMPLEX (Every 2:30 x 5 sets): 2 rounds — 1 Clean Pull + 1 Power Clean + 1 Squat Clean, reset each rep @RPE 8
 2. BB STRICT PRESS (Every 2:00 x 4 sets): 8,6,6,4 building to a set of 4 @RPE 8
 3. BENCH PRESS (Every 2:30 x 3 sets): MAX reps @BW or % of BW. Goal 10-15 reps.
-4. CHIN-UPS (Every 2:00 x 4 sets): 6-10 strict chin-ups @RPE 8, or weighted if bodyweight is easy
-PREP (3 sets): shoulder activation — SA DB Arnold Press 10/10 + Banded Face Pull 10 + SA DB External Rotation 10/10
-ACCESSORY (rotate — pick 1-2 from pool, DO NOT repeat what was used last session): DB Lateral Raise, Cable Fly, Pec Dec, Ring Dips, Push Press, DB Incline Fly, Landmine Press, Rear Delt Fly
-WEIGHTED ABS (3-4 sets, rotate formats): Toes to Bar / Hanging Knee Raise / Weighted Sit-up / L-sit hold / Ab wheel rollout / Dragon flag
-CARDIO FINISHER (10-12 min, rotate formats): AMRAP ladder / capped circuit with burpees+push-ups / EMOM with erg calories`,
+4. CHIN-UPS (Every 2:00 x 4 sets): 6-10 strict chin-ups @RPE 8, or weighted if easy
 
-    Wed:`WEDNESDAY = Hyrox-style endurance.
-PREP: 2 min cardio + 2 sets (10 hamstring sweeps, 10 ROM mountain climbers, 10 squat+lunge combo) + 3 sets 30s Erg / 50 skips
-ENDURANCE (perform 1 set of each, R60s between): (1) 3 min Ski@RPE7 → 400m Run → 1 min MAX cal Ski / (2) 3 min Bike Erg@RPE7 → 400m Run → 1 min MAX cal Bike Erg / (3) 3 min Row Erg@RPE7 → 400m Run → 1 min MAX cal Row / (4) 3 min AB@RPE7 → 400m Run → 1 min MAX cal AB
-BW/CALORIE FLOW: 50-40-30-20-10 of Cals + Push-ups + Ab mat sit-ups. Perform 50m sandbag carry between each set. F = subtract 5 cal.
-MOBILITY: 30s passive hang + 5 up/down dog flow + 5 squat+straighten`,
+PREP (2-3 sets, rotate shoulder activation):
+Option A: 10/10 SA DB Arnold Press + 10 Banded Face Pull + 10/10 SA DB External Rotation
+Option B: 5 Push-up+Inchworm + 5/5 Quadruped T-Spine rotations + 5/5 Book Opener + 10 Strict KB Press + 10 KB Bent Over Row + 12/15 Cal
+Option C: 10 DB Upright Row + Ext Rotation + 10/10 SA Ring Row + 10 Push-up + rotation
+
+RELOAD CONDITIONING (use when energy is high — rotate formats):
+Format A: 5 sets — 12/15 Cal Ski + 15 HRPU. Then 5 sets — 12/15 Cal Row + 15 DB Strict Press. Then 5 sets — 12/15 Cal AB + 15 Butterfly Sit-up. Rest 120s between A/B/C.
+Format B: TUT — 40s on:90s off x 4 sets MAX Incline DB Bench@20-20 tempo
+
+ACCESSORY (rotate — pick 1-2, DO NOT repeat last session's accessories):
+DELTS: Every 3:00 x 3 sets — 8/8 Half Kneeling Landmine Press@RPE6 + 8 Ring Row + 8 DB Lateral Raises. Keep smooth and controlled.
+PRESSING: Every 2:00 x 4 sets — 8-12 Seated Neutral Grip DB Press@RPE6. Then 8-12 Flat Neutral Grip DB Bench@RPE6
+UPPER DECK: Every 2:30 x 4 sets — 12-15 Incline DB Bench@RPE6
+Other options: DB Rear Delt Fly, Pec Dec, Cable Fly, Ring Dips, Push Press
+
+WEIGHTED ABS (3-4 sets, rotate formats every session):
+- Toes to Bar 10-15 + Weighted Sit-up 20 + L-sit hold 20s
+- EMOM x 10 min: Min 1: 10-15 V-ups / Min 2: 10-15 Push-ups
+- Dragon flag x5 + Ab wheel rollout x10 + Hanging Knee Raise x15
+- Side Plank 30/30s + Hollow Rocks 30s + Hanging Knee Raise 30s + Rest 30s (3 sets)
+
+CARDIO FINISHER (rotate formats, always end with one):
+- 12 min CAP: 40 Burpee to target + 30 Toes to bar + 40 Push-ups + 60 Ab mat sit-ups
+- EMOM x 10 min: Min 1: 10-15 V-ups / Min 2: 10-15 Push-ups
+- AMRAP ladder 2-4-6-8: DB Thrusters + HRPU + 6/9 cal b/t sets`,
+
+    Wed:`WEDNESDAY = Hyrox-style endurance. Rotate formats to keep it fresh.
+
+PREP (always structured): 2 min cardio + 2 sets movement prep (hamstring sweeps, ROM mountain climbers, squat+lunge combo) + 3 sets 30s Erg/50 skips OR 2 sets (ROM mountain climbers+rotation, DB Goblet Squat, 30s Thoracic ext stretch)
+
+ENDURANCE MAIN BLOCK (rotate formats week to week):
+FORMAT A — LONG INTERVALS (perform 1 set each, R60s): (1) 3 min Ski@RPE7 → 400m Run → 1 min MAX Cal Ski / (2) 3 min Bike@RPE7 → 400m Run → 1 min MAX Cal Bike / (3) 3 min Row@RPE7 → 400m Run → 1 min MAX Cal Row / (4) 3 min AB@RPE7 → 400m Run → 1 min MAX Cal AB
+FORMAT B — CALORIE EMOM (Every 2:00 x 20 sets, rotate through 4 machines): (1) 20/24/30 Cal Ski Erg / (2) 20/24/30 Cal Row Erg / (3) 20/24/30 Cal Bike Erg / (4) 200m Run. Pick a cal target you can hit in ~90s. If competed on weekend, keep moderate.
+FORMAT C — 5-MIN BLOCKS EMOM x 30 min: Min 1: 150/200/250m Ski / Min 2: 12-15 KB Deadlift / Min 3: 300/400/500m Bike / Min 4: 12-15 TRX Row / Min 5: Rest. Flow through at steady pace.
+
+BW/CALORIE FLOW (always present, rotate rep scheme):
+- 50-40-30-20-10: Cals + Push-ups + Ab mat sit-ups. 50m sandbag carry between sets. F = subtract 5 cal.
+- Descending ladder: 20-15-10 Hanging Knee Raise + 200-150-100 Single Under Skips
+
+MOBILITY COOLDOWN: 30s Passive Hang + 5 Up/Down dog flow + 5 Squat+Straighten`,
 
     Thu:`THURSDAY = Back + Biceps + Weighted Abs.
-PREP (3 sets): 10 Seated Pull-up + 10 Banded Pass Through + 10/10 KB Teapot + 20/20s Side Plank
-PULL STRENGTH: 1 MAX set dead-hang strict pull-ups — must pause 0.5s at bottom each rep. Log result.
-BACK ATTACK (Every 2:30 x 4 sets): 7-9 Chest Supported DB Row @2s pause top
-STRENGTH SUPERSET (Every 2:00 x 10 sets, alternate): (1) 10 BB Hip Thrust @2s pause top / (2) 15-20 Ring Row
-WEIGHTED ABS (3-4 sets): 20 Butterfly sit-ups + Dragon flag x5 + Weighted cable crunch 15
-EMOM FINISHER (x20 min): Min 1: 12 Alt DB Power Snatch / Min 2: 20 Butterfly sit-up / Min 3: MAX cal erg / Min 4: Rest. Goal 18/22 cal+. Base 1x10/15kg, Athlete 1x12.5/20kg.`,
 
-    Fri:`FRIDAY = Chest DB + Dips + Triceps (Bodybuilding day).
-PREP (2 sets): 10 Banded upright row + ext rotation + 10 Ring Row + 10 Push-up + rotation
-TUT BLOCK (40s on:90s off x 4 sets): MAX Incline DB Bench @20-20 tempo
-BODYBUILDING (perform 1 set every 2:00, complete all sets before moving on): (1) Seated Arnold Press 4x12 / (2) Incline DB Fly 3x12 / (3) 3x MAX Deficit Push-up / (4) Twisting DB Curls 3x12 + Overhead Tricep Ext 3x12
-AMRAP FINISHER (10 min): Ladder 2-4-6-8 etc — DB Thrusters + HRPU + 6/9 cal between each set. Base 1x10/15kg.
-GUNZ (3 sets): 20 Hammer Curls + 20 Skull Crushers. R60s.`
+PREP OPTIONS (rotate, 2-3 sets):
+Option A: 10 Seated Pull-up + 10 Banded Pass Through + 10/10 KB Teapot + 20/20s Side Plank
+Option B: 10 Hip Bridge + 10 Ring Face Pull + 10 Banded Pass Through + 10 Banded Pull-apart
+Option C: 2 min cardio + 10 Contra lateral dead-bug + 10 Alt Bird dog + 10 Bear Squat + 3 sets (5 Strict Burpee + 10 Ball Slam + 12/15 Cal)
+
+PULL STRENGTH (always present, rotate format):
+- 1 MAX set dead-hang strict pull-ups — pause 0.5s at bottom each rep. Log your number.
+- PULL: Every 2:00 x 3 sets — 12-15 Inverted BB Row
+
+BACK ATTACK (rotate variations — Every 2:00-2:30 x 4-5 sets):
+- 7-9 Chest Supported DB Row @2s pause top @RPE7
+- 16 Alt ISO Chest Supported DB Row @RPE7 — hold one DB contracted while rowing the other
+- Every 2:00 x 5 sets: 16 Alt ISO Chest Supported DB Row@RPE7
+
+STRENGTH SUPERSET (Every 90s-2:00 x 10 sets, alternate):
+- (1) 12-15 BB Hip Thrust @RPE7, 2s pause top / (2) 8-10 Band Assist Pull-up OR 15-20 Ring Row
+
+WEIGHTED ABS (3-4 sets, rotate every session):
+- 20 Butterfly sit-ups + Dragon flag x5 + Weighted cable crunch 15
+- Side Plank 30/30s + Hollow Rocks 30s + Hanging Knee Raise 30s + Rest 30s
+- 3 sets: 30/30s Side Plank + 30s Hollow Rocks + 30s Hanging Knee Raise + 30s Rest
+
+FINISHER OPTIONS (rotate formats):
+- EMOM x 20 min: Min 1: 12 Alt DB Power Snatch / Min 2: 20 Butterfly sit-up / Min 3: MAX cal erg / Min 4: Rest. Goal 18/22 cal+. Base 1x10/15kg, Athlete 1x12.5/20kg.
+- 4 sets circuit: 10-12 DB Pullover + 15-20 Banded Face Pull + 15/15 KB Teapot + 60s Plank + 60s Erg@recovery pace
+- SOLO RELOAD for time: 80/100 Cal Ski + 30 Burpee to plate + 150m Farmer Carry + 80/100 Cal Bike + 150m Sandbag Carry + 80/100 Cal Row`,
+
+    Fri:`FRIDAY = Chest + Arms + Bodybuilding. Always end with GUNZ.
+
+PREP OPTIONS (rotate, 2 sets):
+Option A: 10 Banded upright row + ext rotation + 10/10 SA Ring Row + 10 Push-up + rotation
+Option B: 10 DB Upright Row + ext rotation + 10 Ring Row + 10 Push-up + rotation
+
+UPPER PRESSING (always present — rotate main chest movement):
+- TUT BLOCK: 40s on:90s off x 4 sets — MAX Incline DB Bench@20-20 tempo
+- UPPER DECK: Every 2:30 x 4 sets — 12-15 Incline DB Bench@RPE6
+- Every 3:00 x 3 sets — 12-16 Alt Incline DB Bench + 20 DB Rear Delt Fly
+
+PUMP BLOCK (rotate — Every 3:00-4:00 x 4-5 sets):
+Option A: Every 4:00 x 5 sets — 15 DB Z-Press + 15 DB/BB Deadlift + 15 ROM Push-up + remaining time Erg@recovery
+Option B: BODYBUILDING — perform 1 set every 2:00, complete all sets: (1) Seated Arnold Press 4x12 / (2) Incline DB Fly 3x12 / (3) 3xMAX Deficit Push-up / (4) Twisting DB Curls 3x12 + Overhead Tricep Ext 3x12. Complete all sets before moving on.
+Option C: DELTS — Every 3:00 x 3 sets: 8/8 Half Kneeling Landmine Press + 8 Ring Row + 8 DB Lateral Raises
+
+ARMS (rotate week to week — always 3 sets):
+Option A (GUNZ classic): 20 Hammer Curls + 20 Skull Crushers, R60s
+Option B (GUNZ expanded): 8 BB Reverse Curl + 8 Hammer Curls + 8 Skull Crusher + 8 Overhead Tri Ext + 20m Plate Pinch Walk
+Option C: Twisting DB Curls 3x12 + Overhead Tricep Ext 3x12 + Deficit Push-ups 3xMAX
+
+FINISHER (rotate formats, always end the session):
+- 10 min AMRAP ladder 2-4-6-8: DB Thrusters + HRPU + 6/9 cal b/t sets. Base 1x10/15kg.
+- EMOM x 10 min: Min 1: 10-15 V-ups / Min 2: 10-15 Push-ups
+- 12 min CAP: 40 Burpee to target + 30 Toes to bar + 40 Push-ups + 60 Ab mat sit-ups`
   };
 
   const daySpecific = dayPrograms[day] || `${split.type} session focusing on ${split.label}`;
@@ -461,12 +558,14 @@ Use these exact tags. Every exercise must use [EX:]. Sections always start with 
 
 STYLE RULES:
 - Use EMOM, Every X:XX x N sets, AMRAP, For Time — never just "3 sets of 10" without a rest interval
-- Always use RPE cues (RPE 7-8 is the target range)
+- Always use RPE cues (RPE 6 = moderate/deload, RPE 7 = comfortable hard, RPE 8 = hard)
 - Pause reps for quality: @2s pause top or bottom
-- Name sections boldly: POWER, PRESSING, BACK ATTACK, GUNZ, etc.
-- Give calorie targets on erg work with Base/Athlete levels
-- Label alternating pairs as (1) and (2)
-- Finisher must be creative and hard
+- Name sections boldly: RELOAD, POWER, PRESSING, BACK ATTACK, PUMP, UPPER DECK, GUNZ, SOLO RELOAD etc.
+- Give tiered calorie targets: Base/Athlete/Competitor levels on erg work
+- Label alternating pairs as (1) and (2), parallel blocks as A/B/C
+- Include coaching cues like "smooth tempo nothing heavy", "full send sprints", "flow through at steady pace", "keep pace light break as needed"
+- Finisher must be creative and hard — rotate between EMOM, AMRAP, for-time chipper, ladder, Tabata, solo erg effort
+- On deload/low energy days: use RPE 6, label sections RELOAD, smooth tempo cues, recovery erg pace
 
 TODAY'S SPECIFIC PROGRAM:
 ${daySpecific}
@@ -481,7 +580,7 @@ Generate the complete workout now using only the [SECTION][TIMING][EX][NOTE] tag
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, messages:[{role:'user',content:prompt}] })
     });
     const data = await res.json();
@@ -581,7 +680,7 @@ async function genWeek(){
 For each training day give: primary weekly focus, a specific performance target, and one technical cue.
 Return JSON only: [{"day":"Monday","focus":"...","target":"...","technical":"..."},...]`;
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:prompt}]})});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
     let text=data.content?.map(i=>i.text||'').join('')||'';
     text=text.replace(/```json|```/g,'').trim();
@@ -720,7 +819,7 @@ Be specific with quantities scaled to ${people}. Keep it practical and achievabl
   try {
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','x-api-key':'sk-ant-api03-eiwLCy_Jj_peQLtPZxrhwwQjNxGQuSTwVb9yKhEqmKUlr8a0TWyS4Zzc6hI6mgqXNtwnKqb3KipQRoR1ksumQQg-leysFwAA','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})
     });
     const data=await res.json();
