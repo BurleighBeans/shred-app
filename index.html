@@ -578,10 +578,10 @@ ${energy==='🔥 High'?'HIGH ENERGY: Push RPE targets up. Use competitor cal tar
 Generate the complete workout now using only the [SECTION][TIMING][EX][NOTE] tags.`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages',{
+    const res = await fetch('/api/claude',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:1000, messages:[{role:'user',content:prompt}] })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ max_tokens:1000, messages:[{role:'user',content:prompt}] })
     });
     const data = await res.json();
     if(!res.ok) {
@@ -688,7 +688,7 @@ async function genWeek(){
 For each training day give: primary weekly focus, a specific performance target, and one technical cue.
 Return JSON only: [{"day":"Monday","focus":"...","target":"...","technical":"..."},...]`;
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:prompt}]})});
+    const res=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({max_tokens:800,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
     let text=data.content?.map(i=>i.text||'').join('')||'';
     text=text.replace(/```json|```/g,'').trim();
@@ -825,10 +825,10 @@ FORMAT EXACTLY LIKE THIS:
 Be specific with quantities scaled to ${people}. Keep it practical and achievable.`;
 
   try {
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/claude',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({max_tokens:1500,messages:[{role:'user',content:prompt}]})
     });
     const data=await res.json();
     const text=data.content?.map(i=>i.text||'').join('')||'';
