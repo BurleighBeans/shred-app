@@ -1,0 +1,15 @@
+# Never commit these
+.env
+.env.local
+.env*.local
+*.env
+
+# Netlify
+.netlify
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
