@@ -327,7 +327,7 @@
 // ============================================================
 // PERIODIZATION ENGINE
 // ============================================================
-const BLOCK_START = new Date('2025-03-09'); // Block A start
+const BLOCK_START = new Date('2026-03-09'); // Block A start
 
 function getBlockInfo() {
   const now = new Date();
@@ -460,7 +460,7 @@ function renderBlockBar(){
 
 function checkBlockComplete(){
   const info = getBlockInfo();
-  if(info.blockComplete && !S.blockBPrompted){
+  if(info.weekNum === 12 && !S.blockBPrompted){
     document.getElementById('block-end-modal').classList.add('show');
   }
 }
@@ -579,13 +579,18 @@ A: 10/10 SA DB Arnold press + 10 banded face pull + 10/10 SA DB external rotatio
 B: 5 push-up+inchworm + 5/5 quadruped T-spine rotations + 5/5 book opener + 10 strict KB press + 10 KB bent over row
 C: 10 DB upright row + ext rotation + 10/10 SA ring row + 10 push-up + rotation
 
-ACCESSORY POOL by phase (Zone 1/2/3/4 — complete all work in one zone before moving):
-Phase 1 (isolation ok): DB lateral raise, cable fly, cable tricep extension, rear delt fly, incline DB fly, pec dec, ring dips, landmine press, cable curl, face pull
-Phase 2 (compound only): Ring dips, landmine press, ring rows, push press, DB incline press, cable row
-Phase 3 (1-2 max, compound only): Ring dips, weighted chin-up variation, landmine press
+SHOULDER ACCESSORY — ALWAYS PRESENT (Zone 2/3, guaranteed every Tuesday):
+DB lateral raise OR cable lateral raise — 3-4 sets, reps by phase (Phase 1: 15-20 / Phase 2: 12-15 / Phase 3: 10-12 heavier)
+Can be folded into finisher EMOM as a rest-minute movement if time is tight.
 
-WEIGHTED ABS (fold into finisher or rest periods, Zone 4):
-Toes to bar / hanging knee raise / L-sit / dragon flag / ab wheel / V-up / butterfly sit-up / weighted sit-up
+ADDITIONAL ACCESSORY by phase (Zone 1/2/3/4, rotate, avoid repeating last session):
+Phase 1 (isolation ok): Cable fly, rear delt fly, incline DB fly, pec dec, ring dips, landmine press, face pull, half kneeling landmine press
+Phase 2 (compound only): Ring dips, landmine press, ring rows, push press, DB incline press, cable row
+Phase 3 (1 max, compound only): Ring dips, weighted chin-up variation, landmine press
+
+WEIGHTED ABS — 3 MOVEMENTS GUARANTEED (Zone 4, always present — fold into rest periods or finisher EMOM):
+Pick 3 rotating combinations from: Toes to bar / Hanging knee raise / Dragon flag / Ab wheel rollout / L-sit hold / Weighted sit-up / Butterfly sit-up / V-up / Cable crunch / Hollow rock
+Never repeat same combo back to back. Combine 2-3 into finisher EMOM minutes to save transition time.
 
 CARDIO FINISHER (Zone 5, always last):
 Phase 1: 10-14 min moderate — AMRAP ladder, EMOM with ergs, capped circuit
@@ -639,13 +644,15 @@ STRENGTH SUPERSET (Zone 1/4, Every 90s-2:00 x 8-10 sets alt):
 (1) BB hip thrust @2s pause top — reps/load by phase
 (2) Band assist pull-up OR ring row OR chin-up — reps by phase
 
-BICEP WORK (Zone 2/3, rotate, phase-appropriate):
-Phase 1: Cable curl + hammer curl — higher reps 12-15
-Phase 2: BB curl + incline DB curl — 8-10 reps
-Phase 3: Heavy BB curl 5s — working to heavy sets
+BICEP WORK — 3 MOVEMENTS GUARANTEED (Zone 2/3, always present, rotate combinations by phase):
+Phase 1 pool (12-15 reps): BB curl / EZ bar curl / hammer curl / incline DB curl / cable curl / reverse curl / concentration curl
+Phase 2 pool (8-10 reps): BB curl / EZ bar curl / incline DB curl / spider curl / cable curl
+Phase 3 pool (heavy sets, 5-8 reps): Heavy BB curl pyramid / EZ bar curl heavy / incline DB curl loaded
+Always pick 3 different movements — rotate week to week, never same 3 twice in a row.
 
-WEIGHTED ABS (Zone 4, fold into finisher where possible):
-Butterfly sit-ups / dragon flag / cable crunch / L-sit / side plank / hollow rocks
+WEIGHTED ABS — 3 MOVEMENTS GUARANTEED (Zone 4, always present — fold into finisher EMOM or superset with hip thrust rest periods):
+Pick 3 rotating from: Toes to bar / Hanging knee raise / Dragon flag / Ab wheel rollout / L-sit hold / Weighted sit-up / Butterfly sit-up / Cable crunch / Hollow rock / Side plank weighted
+Never repeat same combo back to back. Combine into finisher EMOM where possible.
 
 FINISHER (Zone 5, rotate formats):
 - EMOM x 20 min: Min 1: 12 alt DB power snatch / Min 2: 20 butterfly sit-up / Min 3: MAX cal erg / Min 4: Rest. Goal 18/22 cal+.
@@ -668,10 +675,17 @@ A: Every 4:00 x 5 sets — 15 DB Z-press + 15 DB/BB deadlift + 15 ROM push-up + 
 B: BODYBUILDING — every 2:00: (1) Seated Arnold press 4x12 / (2) Incline DB fly 3x12 / (3) 3xMAX deficit push-up / (4) Twisting DB curls 3x12 + overhead tricep ext 3x12
 C: CABLES (Zone 3) — cable fly 3x12 + cable tricep extension 3x15 + straight arm pulldown 3x12. All at same cable station.
 
-ARMS (Zone 2/3, rotate week to week, rep ranges by phase):
-A: 20 hammer curls + 20 skull crushers (GUNZ classic), R60s
-B: BB reverse curl 8 + hammer curls 8 + skull crusher 8 + overhead tri ext 8 + 20m plate pinch walk
-C: Cable curl 12-15 + cable tricep pushdown 15 + incline DB curl 10-12
+DIPS — PRESENT 80% OF SESSIONS (Zone 4, primary tricep compound):
+Ring dips or bar dips — reps/loading by phase. Count as 1 of the 3 tricep movements.
+On the 20% of sessions without dips: substitute close grip bench press or weighted push-up.
+
+TRICEP WORK — 3 MOVEMENTS GUARANTEED (Zone 2/3/4, always present, rotate combinations):
+Phase 1 pool (12-15 reps): Skull crusher / overhead tricep extension / cable tricep pushdown / rope pushdown / DB tricep kickback / close grip bench
+Phase 2 pool (8-12 reps): Skull crusher / overhead tricep extension / cable pushdown / close grip bench / JM press
+Phase 3 pool (heavy, 6-8 reps): Close grip bench heavy / skull crusher loaded / overhead tricep extension loaded
+Always 3 movements total including dips. Rotate week to week — never same combination twice in a row.
+
+NO WEIGHTED ABS ON FRIDAY — abs trained Tuesday and Thursday. Friday is rest day for core.
 
 FINISHER (Zone 5, always end here, phase-scaled):
 Phase 1: 10 min AMRAP ladder 2-4-6-8 — DB thrusters + HRPU + 6/9 cal between sets
@@ -779,8 +793,25 @@ function renderWorkout(container,text){
 function addLogButton(container,day,type,time,info){
   const wrap=document.createElement('div');
   wrap.style.marginTop='16px';
-  wrap.innerHTML=`<button class="btn btn-success" onclick="logSession('${day}','${type}','${time}',${info.weekNum},${info.phase})">✓ LOG THIS SESSION</button>`;
+  wrap.innerHTML=`
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px">
+      <div class="label" style="margin-bottom:8px">Rate This Session</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px" id="star-row">
+        ${[1,2,3,4,5].map(n=>`<button onclick="setStar(${n})" id="star-${n}" style="background:none;border:none;font-size:24px;cursor:pointer;opacity:0.3;transition:all 0.15s;padding:0">★</button>`).join('')}
+      </div>
+      <input type="text" id="session-note" placeholder="Quick note... (e.g. bench felt strong, finisher was brutal)" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;-webkit-appearance:none;">
+    </div>
+    <button class="btn btn-success" onclick="logSession('${day}','${type}','${time}',${info.weekNum},${info.phase})">✓ LOG THIS SESSION</button>`;
   container.appendChild(wrap);
+}
+
+let _selectedStar = 0;
+function setStar(n){
+  _selectedStar = n;
+  [1,2,3,4,5].forEach(i=>{
+    const el = document.getElementById('star-'+i);
+    if(el){ el.style.opacity = i<=n ? '1' : '0.3'; el.style.color = i<=n ? 'var(--accent)' : 'var(--muted)'; }
+  });
 }
 
 function extractSessionMeta(bodyEl){
@@ -799,7 +830,10 @@ function extractSessionMeta(bodyEl){
 function logSession(day,type,time,weekNum,phase){
   const bodyEl=document.getElementById('wo-body');
   const{accessories,finisherFormat}=extractSessionMeta(bodyEl);
-  S.sessions.unshift({date:new Date().toISOString(),day,type,time,accessories,finisherFormat,weekNum,phase});
+  const rating = _selectedStar || 0;
+  const note = document.getElementById('session-note')?.value || '';
+  _selectedStar = 0;
+  S.sessions.unshift({date:new Date().toISOString(),day,type,time,accessories,finisherFormat,weekNum,phase,rating,note});
   const today=new Date().toDateString();
   if(S.lastSession!==today){
     const yest=new Date(Date.now()-86400000).toDateString();
@@ -874,7 +908,7 @@ function updateProgress(){
   document.getElementById('bf-pct').textContent=Math.round(bPct)+'%';
   const logEl=document.getElementById('log-list');
   if(!S.sessions.length){logEl.innerHTML=`<div style="color:var(--muted);font-size:13px;padding:20px 0;text-align:center">No sessions logged yet.</div>`;}
-  else{logEl.innerHTML=S.sessions.slice(0,15).map(s=>{const d=new Date(s.date);return`<div class="log-item"><div><div class="log-date">${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</div><div class="log-name">${s.day} — ${SPLIT[s.day]?.label||s.type}</div><div style="font-size:10px;color:var(--muted);margin-top:2px">${s.weekNum?'W'+s.weekNum+' · P'+s.phase:''}</div></div><div class="log-meta">${s.time}<br>${s.type}</div></div>`;}).join('');}
+  else{logEl.innerHTML=S.sessions.slice(0,15).map(s=>{const d=new Date(s.date);const stars=s.rating?'★'.repeat(s.rating)+'☆'.repeat(5-s.rating):'';return`<div class="log-item" style="flex-direction:column;align-items:flex-start;gap:6px"><div style="display:flex;justify-content:space-between;width:100%"><div><div class="log-date">${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</div><div class="log-name">${s.day} — ${SPLIT[s.day]?.label||s.type}</div><div style="font-size:10px;color:var(--muted);margin-top:2px">${s.weekNum?'W'+s.weekNum+' · P'+s.phase:''}</div></div><div class="log-meta" style="text-align:right">${s.time}<br>${stars?`<span style="color:var(--accent);letter-spacing:1px;font-size:11px">${stars}</span>`:''}</div></div>${s.note?`<div style="font-size:11px;color:var(--muted);font-style:italic;padding-top:2px;border-top:1px solid var(--border);width:100%">${s.note}</div>`:''}</div>`;}).join('');}
 }
 
 function saveCheckin(){
