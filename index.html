@@ -168,8 +168,8 @@
         <button class="trainer-btn" id="trainer-lilly" onclick="setTrainer('Lilly')">Lilly</button>
       </div>
       <div class="header-stats">
-        <div class="header-weight" id="hw">168.2 lbs</div>
-        <div class="header-sub"><span id="hbf">14.0%</span> BF · Goal: 8–9%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--accent)">SHRED APP</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:2px">v0.1</div>
       </div>
     </div>
   </div>
@@ -241,19 +241,18 @@
 
 <!-- PROGRESS -->
 <div class="page" id="page-progress">
-  <div class="label">Body Stats</div>
-  <div class="stat-grid">
-    <div class="stat-box"><div class="stat-val yellow" id="p-weight">168.2</div><div class="stat-unit">lbs</div><div class="stat-delta" id="p-wd">Start</div></div>
-    <div class="stat-box"><div class="stat-val red" id="p-bf">14.0</div><div class="stat-unit">body fat %</div><div class="stat-delta" style="color:var(--muted)">Goal: 8–9%</div></div>
+  <div class="label">Activity</div>
+  <div class="stat-grid" style="grid-template-columns:1fr 1fr">
     <div class="stat-box"><div class="stat-val green" id="p-sessions">0</div><div class="stat-unit">sessions / mo</div><div class="stat-delta green">This month</div></div>
     <div class="stat-box"><div class="stat-val" id="p-streak" style="color:var(--accent3)">0</div><div class="stat-unit">day streak</div><div class="stat-delta" style="color:var(--muted)" id="p-streak-note">Keep going</div></div>
   </div>
-  <div class="goal-card">
-    <div class="goal-title">JUNE SHRED TARGET</div>
-    <div class="bar-wrap"><div class="bar-labels"><span>Weight</span><span id="w-pct">0%</span></div><div class="bar"><div class="bar-fill" id="w-fill" style="width:0%"></div></div></div>
-    <div class="bar-wrap"><div class="bar-labels"><span>Body Fat</span><span id="bf-pct">0%</span></div><div class="bar"><div class="bar-fill" id="bf-fill" style="width:0%"></div></div></div>
-    <div class="timeline-note">Start: 168.2 lbs · 14.0% BF<br>Target: ~157–159 lbs · 8–9% BF · June 2026</div>
-  </div>
+  <div id="p-weight" style="display:none">168.2</div>
+  <div id="p-bf" style="display:none">14.0</div>
+  <div id="p-wd" style="display:none"></div>
+  <div id="w-pct" style="display:none"></div>
+  <div id="bf-pct" style="display:none"></div>
+  <div id="w-fill" style="display:none"></div>
+  <div id="bf-fill" style="display:none"></div>
   <div class="label">Workout Log</div>
   <div id="log-list"><div style="color:var(--muted);font-size:13px;padding:20px 0;text-align:center">No sessions logged yet.</div></div>
 </div>
@@ -890,10 +889,9 @@ Return JSON only: [{"day":"Monday","focus":"...","target":"...","technical":"...
 }
 
 function updateProgress(){
-  document.getElementById('p-weight').textContent=S.weight.toFixed(1);
-  document.getElementById('p-bf').textContent=S.bf.toFixed(1);
-  document.getElementById('hw').textContent=S.weight.toFixed(1)+' lbs';
-  document.getElementById('hbf').textContent=S.bf.toFixed(1)+'%';
+  // Stats hidden for v0.1 — data preserved
+  try{ document.getElementById('p-weight').textContent=S.weight.toFixed(1); }catch(e){}
+  try{ document.getElementById('p-bf').textContent=S.bf.toFixed(1); }catch(e){}
   const mo=new Date().getMonth();
   document.getElementById('p-sessions').textContent=S.sessions.filter(s=>new Date(s.date).getMonth()===mo).length;
   document.getElementById('p-streak').textContent=S.streak;
@@ -901,11 +899,7 @@ function updateProgress(){
   const wdEl=document.getElementById('p-wd');
   wdEl.textContent=wd===0?'Start':(wd>0?'+':'')+wd.toFixed(1)+' lbs';
   wdEl.className='stat-delta '+(wd<=0?'green':'red');
-  const wPct=Math.min(100,Math.max(0,((S.startWeight-S.weight)/(S.startWeight-158))*100));
-  const bPct=Math.min(100,Math.max(0,((S.startBF-S.bf)/(S.startBF-8.5))*100));
-  setTimeout(()=>{document.getElementById('w-fill').style.width=wPct+'%';document.getElementById('bf-fill').style.width=bPct+'%';},100);
-  document.getElementById('w-pct').textContent=Math.round(wPct)+'%';
-  document.getElementById('bf-pct').textContent=Math.round(bPct)+'%';
+  // Progress bars hidden for v0.1
   const logEl=document.getElementById('log-list');
   if(!S.sessions.length){logEl.innerHTML=`<div style="color:var(--muted);font-size:13px;padding:20px 0;text-align:center">No sessions logged yet.</div>`;}
   else{logEl.innerHTML=S.sessions.slice(0,15).map(s=>{const d=new Date(s.date);const stars=s.rating?'★'.repeat(s.rating)+'☆'.repeat(5-s.rating):'';return`<div class="log-item" style="flex-direction:column;align-items:flex-start;gap:6px"><div style="display:flex;justify-content:space-between;width:100%"><div><div class="log-date">${d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</div><div class="log-name">${s.day} — ${SPLIT[s.day]?.label||s.type}</div><div style="font-size:10px;color:var(--muted);margin-top:2px">${s.weekNum?'W'+s.weekNum+' · P'+s.phase:''}</div></div><div class="log-meta" style="text-align:right">${s.time}<br>${stars?`<span style="color:var(--accent);letter-spacing:1px;font-size:11px">${stars}</span>`:''}</div></div>${s.note?`<div style="font-size:11px;color:var(--muted);font-style:italic;padding-top:2px;border-top:1px solid var(--border);width:100%">${s.note}</div>`:''}</div>`;}).join('');}
